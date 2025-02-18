@@ -1,7 +1,6 @@
+import { describe, it, expect, vi } from 'vitest'
 import React from 'react'
 import { render } from '@testing-library/react'
-import '@testing-library/jest-dom'
-import 'jest-extended'
 import { Camera } from 'react-feather'
 
 import { TestID } from '@resources/TestID'
@@ -13,7 +12,7 @@ import {
 describe('<IconButtonUploader />', () => {
   it('renders the IconButtonUploader component', () => {
     const enabledProps: IconButtonUploaderProps = {
-      handler: jest.fn,
+      handler: vi.fn,
       dataTestID: TestID.ICON_BUTTON_UPLOADER,
       icon: Camera,
       text: 'takeNote',

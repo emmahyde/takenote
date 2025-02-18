@@ -1,10 +1,10 @@
 import path from 'path'
 
-import express, { Router } from 'express'
+import compression from 'compression'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
+import express, { Router } from 'express'
 import helmet from 'helmet'
-import compression from 'compression'
 
 export default function initializeServer(router: Router) {
   const app = express()

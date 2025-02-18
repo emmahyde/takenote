@@ -1,7 +1,6 @@
+import { describe, it, expect, vi } from 'vitest'
 import React from 'react'
 import { render } from '@testing-library/react'
-import '@testing-library/jest-dom'
-import 'jest-extended'
 
 import { TestID } from '@resources/TestID'
 import { NoteListButton, NoteListButtonProps } from '@/components/NoteList/NoteListButton'
@@ -9,7 +8,7 @@ import { NoteListButton, NoteListButtonProps } from '@/components/NoteList/NoteL
 describe('<NoteListButton />', () => {
   it('renders the NoteListButton component', () => {
     const enabledProps: NoteListButtonProps = {
-      handler: jest.fn,
+      handler: vi.fn,
       label: 'Test',
       dataTestID: TestID.EMPTY_TRASH_BUTTON,
     }
@@ -21,7 +20,7 @@ describe('<NoteListButton />', () => {
 
   it('renders the NoteListButton component as disabled', () => {
     const disabledProps: NoteListButtonProps = {
-      handler: jest.fn,
+      handler: vi.fn,
       label: 'Test',
       disabled: true,
       dataTestID: TestID.EMPTY_TRASH_BUTTON,

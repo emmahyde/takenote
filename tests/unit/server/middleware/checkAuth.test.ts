@@ -1,24 +1,28 @@
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+
 import checkAuth from '../../../../src/server/middleware/checkAuth'
 
 describe(`checkAuth middleware`, () => {
   let requestMock: any
   let responseMock: any
-  const nextMock = jest.fn()
-  const statusSend = jest.fn()
+  const nextMock = vi.fn()
+  const statusSend = vi.fn()
 
   beforeEach(() => {
     responseMock = {
       locals: {},
-      status: jest.fn(() => {
+      status: vi.fn(() => {
         return { send: statusSend }
       }),
-      clearCookie: jest.fn(),
+      clearCookie: vi.fn(),
     }
   })
 
-  afterEach(() => jest.resetAllMocks())
+  afterEach(() => {
+    vi.resetAllMocks()
+  })
 
-  test(`should pass saved cookies to locals`, async () => {
+  it(`should pass saved cookies to locals`, async () => {
     requestMock = {
       cookies: {
         githubAccessToken: 'test access token',
@@ -30,7 +34,7 @@ describe(`checkAuth middleware`, () => {
     expect(responseMock.locals.accessToken).toEqual('test access token')
   })
 
-  test(`should exit with an error if no access token cookie`, async () => {
+  it(`should exit with an error if no access token cookie`, async () => {
     requestMock = {
       cookies: {},
     }

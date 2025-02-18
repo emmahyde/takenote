@@ -1,7 +1,6 @@
+import { describe, it, expect, vi } from 'vitest'
 import React from 'react'
 import { render } from '@testing-library/react'
-import '@testing-library/jest-dom'
-import 'jest-extended'
 import { Camera } from 'react-feather'
 
 import { TestID } from '@resources/TestID'
@@ -10,7 +9,7 @@ import { IconButton, IconButtonProps } from '@/components/SettingsModal/IconButt
 describe('<IconButton />', () => {
   it('renders the IconButton component', () => {
     const enabledProps: IconButtonProps = {
-      handler: jest.fn,
+      handler: vi.fn,
       dataTestID: TestID.ICON_BUTTON,
       icon: Camera,
       text: 'takeNote',
@@ -23,7 +22,7 @@ describe('<IconButton />', () => {
 
   it('renders the IconButton component as disabled', () => {
     const disabledProps: IconButtonProps = {
-      handler: jest.fn,
+      handler: vi.fn,
       dataTestID: TestID.ICON_BUTTON,
       disabled: true,
       icon: Camera,

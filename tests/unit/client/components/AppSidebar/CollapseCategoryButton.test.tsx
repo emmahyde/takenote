@@ -1,7 +1,6 @@
+import { describe, it, expect, vi } from 'vitest'
 import React from 'react'
 import { render } from '@testing-library/react'
-import '@testing-library/jest-dom'
-import 'jest-extended'
 
 import { TestID } from '@resources/TestID'
 import { CollapseCategoryListButton } from '@/components/AppSidebar/CollapseCategoryButton'
@@ -9,7 +8,7 @@ import { CollapseCategoryListButton } from '@/components/AppSidebar/CollapseCate
 describe('<CollapseCategoryButton />', () => {
   it('renders the CollapseCategoryButton component', () => {
     const enabledProps: CollapseCategoryListButton = {
-      handler: jest.fn,
+      handler: vi.fn,
       label: 'Test',
       dataTestID: TestID.CATEGORY_COLLAPSE_BUTTON,
       isCategoryListOpen: true,

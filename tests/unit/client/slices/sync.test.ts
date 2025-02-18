@@ -1,3 +1,4 @@
+import { describe, it, expect, vi } from 'vitest'
 import { PayloadAction } from '@reduxjs/toolkit'
 
 import reducer, { initialState, setPendingSync, sync, syncError, syncSuccess } from '@/slices/sync'

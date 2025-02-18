@@ -1,3 +1,4 @@
+import { describe, it, expect, vi } from 'vitest'
 // settings.test.ts
 // Tests for functionality available in the settings menu
 

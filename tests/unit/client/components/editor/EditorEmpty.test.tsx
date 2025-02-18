@@ -1,7 +1,6 @@
+import { describe, it, expect, vi } from 'vitest'
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom'
-import 'jest-extended'
 
 import { TestID } from '@resources/TestID'
 import { EmptyEditor } from '@/components/Editor/EmptyEditor'

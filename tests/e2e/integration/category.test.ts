@@ -1,3 +1,4 @@
+import { describe, it, expect, vi } from 'vitest'
 // category.spec.ts
 // Tests for manipulating note categories
 

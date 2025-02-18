@@ -1,7 +1,6 @@
+import { describe, it, expect, vi } from 'vitest'
 import React from 'react'
 import { render } from '@testing-library/react'
-import '@testing-library/jest-dom'
-import 'jest-extended'
 import { Camera } from 'react-feather'
 
 import { TestID } from '@resources/TestID'
@@ -14,7 +13,7 @@ test('Sample test', () => {
 describe('<ActionButton />', () => {
   it('renders the ActionButton component', () => {
     const enabledProps: ActionButtonProps = {
-      handler: jest.fn,
+      handler: vi.fn,
       label: 'Test',
       dataTestID: TestID.ACTION_BUTTON,
       text: 'text',

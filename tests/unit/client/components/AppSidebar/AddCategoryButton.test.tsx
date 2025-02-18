@@ -1,7 +1,6 @@
+import { describe, it, expect, vi } from 'vitest'
 import React from 'react'
 import { render } from '@testing-library/react'
-import '@testing-library/jest-dom'
-import 'jest-extended'
 
 import { TestID } from '@resources/TestID'
 import {
@@ -12,7 +11,7 @@ import {
 describe('<AddCategoryButton />', () => {
   it('renders the AddCategoryButton component', () => {
     const enabledProps: AddCategoryButtonProps = {
-      handler: jest.fn,
+      handler: vi.fn,
       label: 'Test',
       dataTestID: TestID.ADD_CATEGORY_BUTTON,
     }

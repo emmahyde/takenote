@@ -1,5 +1,5 @@
+import { describe, it, expect, vi } from 'vitest'
 import React from 'react'
-import { mocked } from 'ts-jest/utils'
 import { waitFor } from '@testing-library/react'
 import { name, internet, lorem } from 'faker'
 
@@ -9,18 +9,18 @@ import { TakeNoteApp } from '@/containers/TakeNoteApp'
 
 import { renderWithRouter } from '../testHelpers'
 
-jest.mock('@/selectors')
+vi.mock('@/selectors')
 
-const mockedGetNotes = mocked(getNotes, true)
-const mockedGetSettings = mocked(getSettings, true)
-const mockedGetCategories = mocked(getCategories, true)
-const mockedGetSync = mocked(getSync, true)
-const mockedGetAuth = mocked(getAuth, true)
+const mockedGetNotes = vi.mocked(getNotes)
+const mockedGetSettings = vi.mocked(getSettings)
+const mockedGetCategories = vi.mocked(getCategories)
+const mockedGetSync = vi.mocked(getSync)
+const mockedGetAuth = vi.mocked(getAuth)
 
 const wrap = () => renderWithRouter(<TakeNoteApp />)
 
 describe('<TakeNoteApp />', () => {
-  test('should see empty editor if there are no active notes', async () => {
+  it('should see empty editor if there are no active notes', async () => {
     mockedGetNotes.mockImplementation(() => {
       return {
         activeCategoryId: '',

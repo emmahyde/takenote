@@ -1,14 +1,14 @@
 import React from 'react'
-import { render } from '@testing-library/react'
 import dayjs from 'dayjs'
-import '@testing-library/jest-dom'
-import 'jest-extended'
+import { describe, it, expect } from 'vitest'
 
-import { TestID } from '@resources/TestID'
 import {
   LastSyncedNotification,
   LastSyncedNotificationProps,
 } from '@/components/LastSyncedNotification'
+import { TestID } from '@resources/TestID'
+
+import { render } from '../test-utils'
 
 describe('<LastSyncedNotification />', () => {
   it('renders the Tab component', () => {
@@ -22,7 +22,8 @@ describe('<LastSyncedNotification />', () => {
 
     expect(component).toBeTruthy()
   })
-  it('Should display syncing ', () => {
+
+  it('Should display syncing', () => {
     const enabledProps: LastSyncedNotificationProps = {
       datetime: '',
       pending: false,
@@ -34,7 +35,7 @@ describe('<LastSyncedNotification />', () => {
     expect(getByTestId(TestID.LAST_SYNCED_NOTIFICATION_SYNCING).innerHTML).toBe('Syncing...')
   })
 
-  it('Should display Unsaved change ', () => {
+  it('Should display Unsaved change', () => {
     const enabledProps: LastSyncedNotificationProps = {
       datetime: '',
       pending: true,
@@ -46,7 +47,7 @@ describe('<LastSyncedNotification />', () => {
     expect(getByTestId(TestID.LAST_SYNCED_NOTIFICATION_UNSAVED).innerHTML).toBe('Unsaved changes')
   })
 
-  it('Should display date ', () => {
+  it('Should display date', () => {
     const enabledProps: LastSyncedNotificationProps = {
       datetime: Date(),
       pending: false,

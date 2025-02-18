@@ -1,3 +1,4 @@
+import { describe, it, expect, vi } from 'vitest'
 // note.test.ts
 // Tests for managing notes (create, trash, favorite, etc)
 

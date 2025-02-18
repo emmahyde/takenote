@@ -1,8 +1,7 @@
+import { describe, it, expect, vi } from 'vitest'
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import '@testing-library/jest-dom'
-import 'jest-extended'
 import { PreviewEditor, PreviewEditorProps } from '@/components/Editor/PreviewEditor'
 import NoteLink, { NoteLinkProps } from '@/components/Editor/NoteLink'
 import { NoteItem } from '@/types'
@@ -37,7 +36,7 @@ describe('<PreviewEditor />', () => {
     const props: NoteLinkProps = {
       uuid: '{{test-note}}',
       notes: [noteItemProps],
-      handleNoteLinkClick: jest.fn,
+      handleNoteLinkClick: vi.fn,
     }
 
     const component = render(
@@ -63,7 +62,7 @@ describe('<PreviewEditor />', () => {
     const props: NoteLinkProps = {
       uuid: 'test-note',
       notes: [noteItemProps],
-      handleNoteLinkClick: jest.fn,
+      handleNoteLinkClick: vi.fn,
     }
 
     const component = render(
