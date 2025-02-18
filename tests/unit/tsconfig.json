@@ -2,10 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "baseUrl": "../..",
-    "types": ["cypress", "@testing-library/cypress"],
-    "target": "es6",
-    "lib": ["es6", "dom"],
-    "moduleResolution": "node",
+    "types": ["vitest/globals", "@testing-library/jest-dom"],
     "paths": {
       "@/*": ["src/client/*"],
       "@resources/*": ["src/resources/*"],
@@ -14,11 +11,7 @@
     }
   },
   "include": [
-    "./**/*.ts",
-    "./**/*.tsx",
     "../**/*.ts",
-    "../**/*.tsx",
-    "../../src/client/utils/enums.ts",
-    "../../src/resources/**/*.ts"
+    "../**/*.tsx"
   ]
 }

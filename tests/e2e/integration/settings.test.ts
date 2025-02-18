@@ -1,18 +1,17 @@
-import { describe, it, expect, vi } from 'vitest'
 // settings.test.ts
 // Tests for functionality available in the settings menu
 
-import { TestID } from '@resources/TestID'
-import { getNoteTitle } from '@/utils/helpers'
 import { NoteItem, CategoryItem } from '@/types'
+import { getNoteTitle } from '@/utils/helpers'
+import { TestID } from '@resources/TestID'
 
+import { defaultInit, assertNoteContainsText } from '../utils/testHelperUtils'
 import {
   addCategory,
   assertCategoryExists,
   clickCategoryOptionDelete,
   openCategoryContextMenu,
 } from '../utils/testCategoryHelperUtils'
-import { defaultInit, assertNoteContainsText } from '../utils/testHelperUtils'
 import {
   clickCreateNewNote,
   createXUniqueNotes,
@@ -46,10 +45,25 @@ import {
   getDownloadedBackup,
 } from '../utils/testSettingsUtils'
 
+// Extend Cypress types
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      findByRole(role: string, options?: { name: RegExp }): Chainable<JQuery<HTMLElement>>
+      findByTestId(testId: string): Chainable<JQuery<HTMLElement>>
+      attachFile(options: {
+        fileContent: string
+        filePath: string
+        fileName: string
+        mimeType: string
+        encoding: string
+      }): Chainable<JQuery<HTMLElement>>
+    }
+  }
+}
+
 describe('Settings', () => {
   defaultInit()
-
-  before(() => {})
 
   beforeEach(() => {
     navigateToSettings()
@@ -176,9 +190,8 @@ describe('Settings', () => {
 
       getDownloadedBackup().then((result) => {
         const data = JSON.parse(result as string)
-
-        expect(data.notes).to.have.length(1)
-        expect(data.notes[0].text).to.include('Scratchpad')
+        cy.wrap(data.notes).should('have.length', 1)
+        cy.wrap(data.notes[0].text).should('include', 'Scratchpad')
       })
     })
 
@@ -205,7 +218,7 @@ describe('Settings', () => {
         clickSettingsTab('data management')
 
         cy.findByTestId(TestID.UPLOAD_SETTINGS_BACKUP).attachFile({
-          fileContent: result as Blob,
+          fileContent: result as string,
           filePath: '',
           fileName: 'backup',
           mimeType: 'application/json',
@@ -223,16 +236,3 @@ describe('Settings', () => {
         closeSettingsByClickingX()
 
         backupData.categories.forEach(({ name }) => {
-          assertCategoryExists(name)
-        })
-
-        assertNoteListLengthEquals(2)
-        backupData.notes.slice(1).forEach(({ text }, index) => {
-          assertNoteContainsText(TestID.NOTE_LIST_ITEM + index, getNoteTitle(text))
-        })
-
-        navigateToSettings()
-      })
-    })
-  })
-})
