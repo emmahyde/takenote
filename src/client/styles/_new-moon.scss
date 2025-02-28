@@ -1,3 +1,5 @@
+@use "variables" as *;
+
 .cm-s-new-moon .CodeMirror-gutters {
   background: #333333 !important;
   // Remove white border when line numbers are displayed

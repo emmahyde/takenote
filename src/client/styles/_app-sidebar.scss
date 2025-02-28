@@ -1,9 +1,12 @@
+@use "sass:color";
+@use "variables" as *;
+
 .app-sidebar {
   background: $app-sidebar-color;
   color: $light-font-color;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid darken($app-sidebar-color, 10%);
+  border-right: 1px solid color.adjust($app-sidebar-color, $lightness: -10%);
   z-index: 3;
 
   &-settings {
@@ -15,8 +18,8 @@
     text-align: left;
     padding: 0.75rem;
     border-radius: 0;
-    border-top: 1px solid lighten($app-sidebar-color, 8%) !important;
-    border-right: 1px solid darken($app-sidebar-color, 10%);
+    border-top: 1px solid color.adjust($app-sidebar-color, $lightness: 8%) !important;
+    border-right: 1px solid color.adjust($app-sidebar-color, $lightness: -10%);
     margin: 0;
     position: absolute;
     bottom: 0;
@@ -26,11 +29,11 @@
       background: $app-sidebar-color;
     }
     &:hover {
-      background: lighten($app-sidebar-color, 5%);
+      background: color.adjust($app-sidebar-color, $lightness: 5%);
       .user-settings-icon {
         margin-left: auto;
         margin-right: 0.5rem;
-        color: lighten($app-sidebar-color, 60%);
+        color: color.adjust($app-sidebar-color, $lightness: 60%);
       }
     }
     .user-avatar {
@@ -44,13 +47,13 @@
       margin-bottom: 0.25rem;
     }
     .user-subtitle {
-      color: lighten($app-sidebar-color, 30%);
+      color: color.adjust($app-sidebar-color, $lightness: 30%);
       font-size: 0.85rem;
     }
     .user-settings-icon {
       margin-left: auto;
       margin-right: 0.5rem;
-      color: lighten($app-sidebar-color, 40%);
+      color: color.adjust($app-sidebar-color, $lightness: 40%);
     }
   }
 
@@ -72,11 +75,11 @@
     }
 
     &:focus {
-      background: lighten($app-sidebar-color, 5%);
+      background: color.adjust($app-sidebar-color, $lightness: 5%);
       color: white;
 
       svg {
-        stroke: darken($light-font-color, 10%);
+        stroke: color.adjust($light-font-color, $lightness: -10%);
       }
     }
   }
@@ -91,17 +94,17 @@
     border: 1px solid transparent;
 
     &:hover {
-      background: lighten($app-sidebar-color, 5%);
+      background: color.adjust($app-sidebar-color, $lightness: 5%);
       color: white;
 
       svg {
-        stroke: darken($light-font-color, 10%);
+        stroke: color.adjust($light-font-color, $lightness: -10%);
       }
     }
 
     &.active {
       color: white;
-      background: darken($app-sidebar-color, 5%);
+      background: color.adjust($app-sidebar-color, $lightness: -5%);
 
       svg {
         stroke: $primary;
@@ -111,7 +114,7 @@
     &.dragged-over {
       border: 1px dashed $primary;
       color: white;
-      background: darken($app-sidebar-color, 5%);
+      background: color.adjust($app-sidebar-color, $lightness: -5%);
 
       svg {
         stroke: $primary;
@@ -130,7 +133,7 @@
 
     h2 {
       margin: 0;
-      color: lighten($app-sidebar-color, 30%);
+      color: color.adjust($app-sidebar-color, $lightness: 30%);
       text-transform: uppercase;
       font-size: 0.8rem;
     }
@@ -195,7 +198,7 @@
         display: flex;
         align-items: center;
         padding: 0;
-        color: darken($light-font-color, 25%);
+        color: color.adjust($light-font-color, $lightness: -25%);
         background: transparent;
         font-size: 0.8rem;
         border: none;
@@ -239,22 +242,22 @@
         }
 
         &:hover {
-          background: lighten($app-sidebar-color, 5%);
+          background: color.adjust($app-sidebar-color, $lightness: 5%);
           color: white;
 
           .category-options {
-            color: lighten($app-sidebar-color, 30%);
+            color: color.adjust($app-sidebar-color, $lightness: 30%);
           }
 
           .category-list-name {
             svg {
-              stroke: darken($light-font-color, 10%);
+              stroke: color.adjust($light-font-color, $lightness: -10%);
             }
           }
         }
 
         &.active {
-          background: darken($app-sidebar-color, 5%);
+          background: color.adjust($app-sidebar-color, $lightness: -5%);
           color: white;
 
           .category-list-name {
@@ -267,7 +270,7 @@
         &.dragged-over {
           border: 1px dashed $primary;
           color: white;
-          background: darken($app-sidebar-color, 5%);
+          background: color.adjust($app-sidebar-color, $lightness: -5%);
 
           svg {
             stroke: $primary;
@@ -275,7 +278,7 @@
         }
 
         &.dragging {
-          background: darken($app-sidebar-color, 10%);
+          background: color.adjust($app-sidebar-color, $lightness: -10%);
           box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.15);
         }
       }
@@ -295,7 +298,7 @@
           margin-right: 0.3rem;
         }
         &.active {
-          color: lighten($app-sidebar-color, 20%);
+          color: color.adjust($app-sidebar-color, $lightness: 20%);
         }
       }
     }
@@ -305,7 +308,7 @@
       -webkit-appearance: none;
       display: flex;
       align-items: center;
-      color: darken($light-font-color, 25%);
+      color: color.adjust($light-font-color, $lightness: -25%);
       background: transparent;
       font-size: 0.8rem;
       border: none;
@@ -326,7 +329,7 @@
   [type='text'] {
     -webkit-appearance: none;
     border-radius: 0;
-    background: darken($app-sidebar-color, 5%);
+    background: color.adjust($app-sidebar-color, $lightness: -5%);
     border: none;
     padding: 0.5rem;
     font-size: 0.9rem;

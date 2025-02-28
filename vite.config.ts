@@ -21,6 +21,14 @@ export default defineConfig(({ mode }) => {
       // Define global for libraries that expect it (like react-codemirror2)
       global: 'window',
     },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+          silenceDeprecations: ['import', 'global-builtin', 'color-functions'],
+        },
+      },
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src/client'),

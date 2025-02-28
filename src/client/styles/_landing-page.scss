@@ -1,3 +1,7 @@
+@use "sass:color";
+@use "variables" as *;
+@use "mixins" as *;
+
 .landing-page {
   a {
     color: $primary;
@@ -10,7 +14,7 @@
       font-weight: 600;
     }
     &:hover {
-      color: darken($primary, 15%);
+      color: color.adjust($primary, $lightness: -15%);
     }
   }
 
@@ -43,7 +47,7 @@
 
   .content {
     padding: 1rem 0;
-    background: lighten($note-sidebar-color, 5%);
+    background: color.adjust($note-sidebar-color, $lightness: 5%);
 
     .lead {
       text-align: center;

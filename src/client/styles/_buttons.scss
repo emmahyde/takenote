@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "variables" as *;
+
 %buttons {
   -webkit-appearance: none;
   display: inline-block;
@@ -17,14 +20,14 @@
 }
 
 %buttons-hover {
-  border: 2px solid darken($primary, 5%);
-  background: darken($primary, 5%);
+  border: 2px solid color.adjust($primary, $lightness: -5%);
+  background: color.adjust($primary, $lightness: -5%);
   text-decoration: none;
 }
 
 %buttons-focus {
-  border: 2px solid darken($primary, 10%);
-  background: darken($primary, 10%);
+  border: 2px solid color.adjust($primary, $lightness: -10%);
+  background: color.adjust($primary, $lightness: -10%);
   text-decoration: none;
   outline: none;
 }
@@ -33,13 +36,13 @@
   @extend %buttons;
 
   &.secondary {
-    background: darken($note-sidebar-color, 8%);
-    border: 2px solid darken($note-sidebar-color, 8%);
+    background: color.adjust($note-sidebar-color, $lightness: -8%);
+    border: 2px solid color.adjust($note-sidebar-color, $lightness: -8%);
     color: #666;
 
     &:hover {
-      background: darken($note-sidebar-color, 12%);
-      border: 2px solid darken($note-sidebar-color, 12%);
+      background: color.adjust($note-sidebar-color, $lightness: -12%);
+      border: 2px solid color.adjust($note-sidebar-color, $lightness: -12%);
       color: #555;
     }
   }

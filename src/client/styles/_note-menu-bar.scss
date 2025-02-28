@@ -1,6 +1,9 @@
+@use "sass:color";
+@use "variables" as *;
+
 .note-menu-bar {
   height: 39px;
-  border-top: 1px solid darken($note-sidebar-color, 5%);
+  border-top: 1px solid color.adjust($note-sidebar-color, $lightness: -5%);
   background: $note-sidebar-color;
   display: flex;
   align-items: center;

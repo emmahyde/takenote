@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "variables" as *;
+
 html {
   box-sizing: border-box;
   font-size: 1rem;
@@ -26,7 +29,7 @@ a {
   text-decoration: none;
   font-weight: 600;
   &:hover {
-    color: lighten($primary, 10%);
+    color: color.adjust($primary, $lightness: 10%);
   }
 }
 

@@ -1,11 +1,14 @@
+@use "sass:color";
+@use "variables" as *;
+
 $dark-sidebar: #333;
 $dark-editor: #3f3f3f;
 
 .dark {
   a {
-    color: lighten($primary, 8%);
+    color: color.adjust($primary, $lightness: 8%);
     &:hover {
-      color: lighten($primary, 15%);
+      color: color.adjust($primary, $lightness: 15%);
     }
     &.button {
       color: white;

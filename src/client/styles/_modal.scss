@@ -1,3 +1,6 @@
+@use "sass:color";
+@use "variables" as *;
+
 .dimmer {
   position: fixed;
   display: flex;
